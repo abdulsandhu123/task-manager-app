@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="header">
+      <h1>Task Manager</h1>
+      <p class="subtitle">A full-stack CRUD app </p>
+    </header>
+
+    <!-- CREATE -->
+    <section class="card">
+      <form id="task-form">
+        <div class="field">
+          <label for="title">Task Name</label>
+          <input type="text" id="title" name="title" placeholder="e.g. Learn JavaScript" maxlength="100" required>
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Add a few details (optional)" rows="2"></textarea>
+        </div>
+        <button type="submit" id="submit-btn" class="btn btn-primary">
+          <span id="submit-text">Add Task</span>
+        </button>
+        <button type="button" id="cancel-edit-btn" class="btn btn-ghost hidden">Cancel</button>
+      </form>
+    </section>
+
+    <!-- STATUS -->
+    <p id="loading" class="status hidden">Loading&hellip;</p>
+    <p id="error" class="status status-error hidden">&#10060; Something went wrong. Please try again.</p>
+
+    <!-- READ / UPDATE / DELETE -->
+    <section class="card">
+      <div class="list-header">
+        <h2>Your Tasks</h2>
+        <span id="task-count" class="count-badge">0</span>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+
+      <p id="empty-state" class="empty-state hidden">
+        No tasks yet. Add your first task above to get started.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Task item template -->
+  <template id="task-template">
+    <li class="task-item" data-id="">
+      <label class="task-check">
+        <input type="checkbox" class="task-toggle">
+        <span class="checkmark">&check;</span>
+      </label>
+      <div class="task-body">
+        <p class="task-title"></p>
+        <p class="task-desc"></p>
+      </div>
+      <div class="task-actions">
+        <button class="btn-icon btn-edit" title="Edit task">Edit</button>
+        <button class="btn-icon btn-delete" title="Delete task">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
